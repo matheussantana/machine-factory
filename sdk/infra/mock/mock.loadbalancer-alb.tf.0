@@ -1,0 +1,28 @@
+variable subnet_id_list {
+        type = list(string)
+        default = ["subnet-45aeba22", "subnet-66ca0368"]
+}
+
+variable os_image {
+        type = string
+        default = "ami-0bcaa2267675e78d1"
+}
+
+variable firewall_id_list {
+        type = list(string)
+        default = ["sg-0444a67cbc15a039e"]
+}
+
+
+
+module "balancer" {
+  source = "../modules/network/core/balancer-alb-aws"
+  os_image = var.os_image
+  subnet_id_list = var.subnet_id_list
+  firewall_id_list = var.firewall_id_list
+  namespace = var.namespace
+}
+
+output "balancer" {
+        value = module.balancer
+}

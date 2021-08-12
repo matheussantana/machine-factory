@@ -1,0 +1,14 @@
+version: "3"
+services:
+  srv:
+    build: srv
+    #command: 'ls /data'
+    command: ./tmp/script.sh
+    #ports:
+    # - "5000:5000"
+    volumes:
+     - ./data:/data
+    #links:
+    # - xxxx
+    environment:
+     - ENV_MOCK=mock

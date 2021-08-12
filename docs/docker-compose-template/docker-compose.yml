@@ -1,0 +1,9 @@
+version: "3"
+services:
+  srv:
+    build: srv
+    command: ./tmp/script.sh param1 param2 param3
+    volumes:
+     - ./srv/data:/data
+    environment:
+     - ENV_MOCK=mock

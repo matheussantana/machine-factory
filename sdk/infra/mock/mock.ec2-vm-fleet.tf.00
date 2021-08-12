@@ -1,0 +1,117 @@
+#resource "random_uuid" "test" { }
+
+variable id {
+  type = string
+  default = "ebebe150-2617-45f2-8a0a-6c7ad412c17e"
+  #default =  "${random_uuid.test.result}"
+
+}
+
+variable instance_profile {
+  type = string
+  default = ""
+}
+
+variable firewall_id {
+  type = list(string)
+  default = ["sg-0444a67cbc15a039e"]
+}
+
+variable subnet_id {
+        type = string
+        default = "subnet-45aeba22"
+}
+
+variable quant_inst {
+        type = string
+        default = "1"
+}
+
+
+        ## mover path para applet?
+                #criar repo-sec?
+
+resource "aws_key_pair" "deploy" {
+  key_name   = var.namespace
+  public_key = "${file("./files/certs/mock/id_rsa.pub")}"
+
+}
+/*
+module "ec2_cluster" {
+  source = "../modules/compute/ec2_std"
+  namespace = var.namespace
+  name = var.id
+  id = var.id
+  vm_key = aws_key_pair.deploy.key_name
+  region = var.region
+  user_data = "${file("./files/user_data.sh")}"
+  instance_profile = var.instance_profile
+  firewall_id = var.firewall_id
+  subnet_id = var.subnet_id
+  quant_inst = var.quant_inst
+  disk_size = "12"
+}
+
+output "ec2_std" {
+  value = module.ec2_cluster
+}*/
+
+module "ec2_vm_002" {
+  source = "../modules/compute/ec2_std"
+  namespace = var.namespace
+  name = format("%s/%s",var.namespace,"vm_002")
+  id = format("%s/%s",var.namespace,"vm_002")
+  vm_key = aws_key_pair.deploy.key_name
+  region = var.region
+  user_data = "${file("./files/basic_user_data.sh")}"
+  instance_profile = var.instance_profile
+  firewall_id = var.firewall_id
+  subnet_id = var.subnet_id
+  quant_inst = var.quant_inst
+  disk_size = "50"
+  #os_image = "ami-0675b14d0cce38612"
+  os_image = "ami-0ede0bdf616f9f1a5"
+}
+
+output "ec2_vm_002" {
+  value = module.ec2_vm_002
+}
+
+
+
+#module "dns" {
+#  source = "../modules/network/core/dns-route53"
+#  namespace = var.namespace
+#  id = var.id
+#  ip_list = module.ec2_cluster.ec2_std.public_ip
+#  host = "systemcall.info"
+#  ttl = "5"
+#  tags = var.tags
+#  type = "A"
+#}
+
+#output "dns" {
+#  value = module.dns
+#}
+
+module "ec2_vm_005" {
+  source = "../modules/compute/ec2_std"
+  namespace = var.namespace
+  name = format("%s/%s",var.namespace,"005")
+  id = format("%s/%s",var.namespace,"005")
+  vm_key = aws_key_pair.deploy.key_name
+  region = var.region
+  user_data = "${file("./files/basic_user_data.sh")}"
+  instance_profile = var.instance_profile
+  firewall_id = var.firewall_id
+  subnet_id = var.subnet_id
+  quant_inst = var.quant_inst
+  disk_size = "50"
+  #os_image = "ami-0675b14d0cce38612"
+  os_image = "ami-05dca6bcb44b1d733"
+  model = "t2.small"
+}
+
+output "ec2_vm_005" {
+  value = module.ec2_vm_005
+}

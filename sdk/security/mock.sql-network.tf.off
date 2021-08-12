@@ -1,0 +1,87 @@
+
+# Subnet Group
+
+module sql-subnet-group {
+    source = "../modules/network/core/rds-subnet-group"
+    namespace = var.namespace
+    subnet_group_name = var.param_sql_subnet_group_name#"sql-rds-subnet"
+    tags = var.tags
+    subnet_ids = var.param_sql_subnet_ids_list #["subnet-0622a05b94c2a983e", "subnet-04c5570b1c1317371"]
+}
+
+output sql-subnet-group {
+    value = module.sql-subnet-group
+}
+
+# Firewall/SG for SQL
+
+module "firewall-sql" {
+  source = "../modules/network/core/firewall-security-group"
+  namespace = var.namespace
+  #firewall_name = "firewall-cache-mock-${random_integer.value.id}"
+  firewall_name = var.param_sql_firewall_name #"firewall-sql-mock"
+  network_id = var.param_network_id #"vpc-0c1692a6a05805b85"
+  tags = var.tags
+}
+
+
+output "firewall-sql" {
+  value = module.firewall-sql
+}
+
+module "firewall-rule-id-mysql" {
+  source = "../modules/network/core/firewall-security-group-rule-id-based"
+  namespace = var.namespace
+  from_port = var.param_sql_firewall_port_mysql #"3306"
+  to_port = var.param_sql_firewall_port_mysql #"3306"
+  source_firewall_id = module.firewall-sql.firewall.id
+  firewall-id = module.firewall-sql.firewall.id
+
+}
+
+output "firewall-rule-id-oracle" {
+  value = module.firewall-rule-id-oracle
+}
+
+module "firewall-rule-id-oracle" {
+  source = "../modules/network/core/firewall-security-group-rule-id-based"
+  namespace = var.namespace
+  from_port = var.param_sql_firewall_port_oracle #"1521"
+  to_port = var.param_sql_firewall_port_oracle #"1521"
+  source_firewall_id = module.firewall-sql.firewall.id
+  firewall-id = module.firewall-sql.firewall.id
+
+}
+
+output "firewall-rule-id-mysql" {
+  value = module.firewall-rule-id-mysql
+}
+
+
+
+# Oracle PG
+
+module sql-parameter-group {
+    source = "../modules/database/core/rds-parameter-group"
+    namespace = var.namespace
+    family_name = "oracle-se2-12.2"
+    group_name = var.param_sql_oracle_param_group_name # "pgsqloracle"
+}
+
+output sql-param-group {
+    value = module.sql-parameter-group
+}
+
+# MySQL PG
+
+module sql-parameter-group-mysql {
+    source = "../modules/database/core/rds-parameter-group"
+    namespace = var.namespace
+    family_name = "mysql5.6"
+    group_name = var.param_sql_mysql_param_group_name #"pgsqlmysql"
+}
+
+output sql-param-group-mysql {
+    value = module.sql-parameter-group-mysql
+}
+

@@ -1,0 +1,16 @@
+profile = "ebebe150-2617-45f2-8a0a-6c7ad412c17e_root"
+region = "us-east-1"
+namespace = "ebebe150-2617-45f2-8a0a-6c7ad412c17e"
+account-id = "818429311663"
+tags = {
+    BusinessUnit       = "ACME LTDA"
+    ComplianceList     = ""
+    ComplianceRequired = "0"
+    CriticalLevel      = "9"
+    Email              = "l-acme@acme.com"
+    EscalationList     = "userid1/userid2/userid3"
+    FilaIm             = "l-acme"
+    Product            = "ACME Product"
+    Slack              = "acme-prod"
+    Team               = "acme-devops"
+}

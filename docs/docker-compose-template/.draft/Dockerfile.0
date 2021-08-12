@@ -1,0 +1,16 @@
+FROM centos:latest
+ADD ./conf.d/script.sh /tmp/script.sh
+RUN ["chmod", "+x", "/tmp/script.sh"]
+CMD /bin/bash /tmp/script.sh
+RUN  cat /etc/redhat-release
+
+#ENTRYPOINT [ "/tmp/script.sh"]
+
+#ENTRYPOINT ["su", "-c", "/tmp/script.sh"]
+#CMD ["echo", "$HOME"]
+#ENTRYPOINT ["tail", "-f", "/dev/null"]
+#RUN sestatus
+#RUN su -c "/usr/bin/setenforce 0"
+#RUN ls /tmp
+#RUN su -c /tmp/script.sh
+#CMD tail -f /dev/null

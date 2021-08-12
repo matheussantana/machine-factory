@@ -1,0 +1,26 @@
+resource "aws_key_pair" "deploy-basic" {
+  key_name   = "basic"
+  public_key = "${file("./files/certs/mock/id_rsa.pub")}"
+
+}
+
+module "ec2_cluster-basic" {
+  source = "../modules/compute/ec2_std"
+  namespace = format("%s/%s",var.namespace,"basic")
+  name = format("%s/%s",var.namespace,"basic")
+  id = var.id
+  vm_key = aws_key_pair.deploy-basic.key_name
+  region = var.region
+  user_data = "ls -la "
+  #user_data = "${file("./files/basic_user_data.sh")}"
+  instance_profile = var.instance_profile
+  firewall_id = var.firewall_id
+  subnet_id = var.subnet_id
+  quant_inst = 1
+  os_image = "ami-066027b63b44ebc0a"
+  model = "t2.small"
+}
+
+output "ec2_std-basic" {
+  value = module.ec2_cluster-basic
+}

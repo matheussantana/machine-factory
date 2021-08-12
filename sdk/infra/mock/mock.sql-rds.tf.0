@@ -1,0 +1,84 @@
+###
+# Resource RDS
+# Module: rds
+###
+
+/*
+module "sql-rds" {
+  source = "../modules/database/core/rds"
+  namespace = var.namespace
+  db_name = "mocksql"
+  db_username = "sqluser"
+  db_password = "hausdhf&hsa2212!"
+  db_subnet_group_name = "service-oracle-rds-subnet"
+  parameter_group_name = "service-mocksql"
+  engine = "oracle-se2"
+  engine_version = "12.2.0.1.ru-2019-04.rur-2019-04.r1"
+  tags = var.tags
+  instance_class = "db.m4.large"
+  license_model = "license-included"
+  firewall-sg-id = ["sg-0469e493b1366dbdf"]
+  db_port = "1521"
+
+
+}
+
+output "sql-rds" {
+  value = module.sql-rds
+}*/
+
+###
+# Resource RDS Oracle
+# Module: rds
+###
+
+/*
+module "sql-rds-oracle" {
+  source = "../modules/database/core/rds-oracle"
+  namespace = var.namespace
+  db_name = "mocksql"
+  db_username = "sqluser"
+  db_password = "hausdhf&hsa2212!"
+
+  tags = var.tags
+  instance_class = "db.m4.large"
+  license_model = "license-included"
+  firewall-sg-id = ["sg-0469e493b1366dbdf"]
+  db_port = "1521"
+
+
+}
+
+output "sql-rds" {
+  value = module.sql-rds
+}
+*/
+
+###
+# Resource MySQL
+# Module: rds
+###
+
+
+module "sql-rds-mysql" {
+  source = "../modules/database/core/rds"
+  namespace = var.namespace
+  db_name = "mockmysql"
+  db_username = "sqluser"
+  db_password = "hausdhf&hsa2212!"
+  db_subnet_group_name = "service-sql-rds-subnet"
+  parameter_group_name = "service-pgsqlmysql"
+  engine = "mysql"
+  engine_version = "5.6.43"
+  tags = var.tags
+  instance_class = "db.t3.small"
+  license_model = "general-public-license"
+  firewall-sg-id = ["sg-090592a5904cb30d8"]
+  db_port = "3306"
+
+
+}
+
+output "sql-rds-mysql" {
+  value = module.sql-rds-mysql
+}
