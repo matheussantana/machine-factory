@@ -1,6 +1,8 @@
-# Skylab - Write Once Deploy Everywhere!
+# Machine Factory - Write Once Deploy Everywhere!
 
-Skylab is a open-source SDK library and a Orchestration System to manage infrastructure resources such as containers, virtual machines, databases and virtual data centers from public cloud providers programmatically.
+Machine Factory (MF) is a Infrastructure as Code (IaC) blueprint for Cloud operations
+
+MF is a open-source SDK library and a Orchestration System to manage infrastructure resources such as containers, virtual machines, databases and virtual data centers from public cloud providers programmatically.
 There is also a command language interface (CLI) for infrastructure management and is based in technologies like terraform, shell, python, docker and others.
 It can be used by engineers with roles of Sysops, DevOps or System Administrators to manage and deploy components with reusable and customizable Infrastructure-as-Code blueprints.
 
@@ -43,36 +45,6 @@ This work was made possible by
 * Version 0.02 stable release
 * Be our beta tester and win prizes!
 
-## Subscription
-
-If you want to deploy the resources using our cloud hosting service please send a message to comercial@
-
-![Components](static/img/subs-plan.png)
-
-SUBSCRIBE NOW AT HTTP:///
-
-## Service
-
-If you need professional service we have a public rate card
-
-![Components](static/img/service-price-table.png)
-
-For more information please reach us at comercial@
-
-## Next articles
-
-* How to deploy a linux VM in the cloud with code
-* Infra as Code Getting Started
-* Create a database with terraform blueprints
-* Deploy a container with Docker compose on AWS
-* How to deploy an M5 EC2 VM
-* Free AWS EC2 Credits!
-* How to create a free e-commerce!
-* Host your mkddocs site for free!
-
-## App Directory
-
-The app registry is an important place for software distribution...
 
 ## Blueprints
 
@@ -166,36 +138,6 @@ output "dynamodb" {
 * [docker](https://www.docker.com/) - Container Platform
 * [docker-compose](https://docs.docker.com/compose/) - Container Deploy Tool
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
-
-* Name: Beta
-    * Version: v0.01
-    * Released: Jun, 2019
-    * License: Apache 2
-    * Status: Stable
-
-* Name: Skylab
-    * Version: v0.02
-    * Released: Jan, 2020
-    * License: Server Side Public License
-    * Status: Testing
-
-## Roadmap
-
-* Sprint v0.02 (Release date: Jan/21)
-    * Azure and GCP support are under development.
-    * Advanced Kubernetes Cluster.
-    * Embedded util tools and apps: LAMP, Jenkins, Wordpress, Kubernetes.
-    * Platform: Native Apps and Software
-    * Marketplace: Partner ecosystem
-
-* Sprint v0.01 (Release date: Jun/19)
-    * First major release
-    * Terraform modules and command line interface (CLI)
-    * Docker container for workflow automation
-    * AWS Support for EC2, RDS, S3, Elasticache and DynamoDB
 
 ## Design Principles
 
@@ -216,20 +158,9 @@ There are several ways to help the project
 * Subscription: Contact comercial@systemcall.info for more information
 
 
-## Compatible with
-For now we only support AWS Cloud provider. Other will be implemented in the future.
-
-
-## Demonstration
-
- You can find the video demonstration at https://endpoint
- 
- If you want to schedule a live demo please send a message to comercial@
  
 ## Overview
 Allow to easily Create/Update/Replace/Delete infrastructure resources classes (such as databases, middleware queues, memory caches, file services ,etc.) through a mark-up template language.
-On top of terraform (For now Skylab is based on terraform >= 12.) we have implemented several classes of components, templates and pipelines tools that manages and schedule infrastructure resources running either locally or at any (future) IT infra. provider (like AWS Cloud).
-The classes (or modules in terraform) brings an greater level of abstraction to the developer/admin as it automates many of the complexity in setting up an continuous deployment pipeline (CI/CD as in devops) or an entire infrastructure environment that follows best practices (high-available & scalable, service continuity, secure & resilience)
 
 Resource class file-server (AWS S3 Bucket):
 
@@ -439,20 +370,6 @@ aws_secret_access_key = your_secret_access_key
 Substitute your own AWS credentials values for the values your_access_key_id and your_secret_access_key.
 
 
-### Installing
-
-The first thing you have to do is create the service workspace by cloning/fork/copy the main project.
-
-```
-git clone https://skyfal-repo-abc.local.com
-```
-Or using wget command for Unix.
-
-```
-wget https://skyfal-repo-abc.local.com
-```
-
-
 ## Core components
 
 
@@ -474,42 +391,12 @@ wget https://skyfal-repo-abc.local.com
 | utils/iaas-tool | docker container tool to automate task execution |
 
 
-## Deployment
-
-    Add additional notes about how to deploy this on a live system
-
-## Forums
-    A forum for technical questions about how to use.
-
-## Documentation
-
-    For more details acess [documentation]
-
 ## Authors
 
-* **Matheus S. Lima** - *Initial work* - [Skyfall](https://github.com/matheussantana/skyfall/)
+* **Matheus S. Lima**
 
 See also the list of [contributors.md]() who participated in this project.
 
 ## License
 
-  Skylab is free and the source is available. Versions released prior to
-  October, 2020 are published under the Apache 2. All versions released after
-  October 1, 2020, including patch fixes for prior versions, are published
-  under the Server Side Public License (SSPL) v1. See individual files for
-  details.
-  
-  Fore more details see the license document in [LICENSE-v0.02.md]()
-
-## Bug Reports
-
-  See https....
-
-## Acknowledgments
-
-## TODO
-
-* More logs, metrics and alerts...
-* Network layer (VPC and subnets).
-* More examples and improve docs.
-* ...
+ Server Side Public License
