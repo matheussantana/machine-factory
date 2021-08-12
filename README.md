@@ -1,6 +1,4 @@
-# Machine Factory - Write Once Deploy Everywhere!
-
-Machine Factory (MF) is a Infrastructure as Code (IaC) blueprint for Cloud operations
+# Machine Factory (MF) is a Infrastructure as Code (IaC) blueprint for Cloud operations
 
 MF is a open-source SDK library and a Orchestration System to manage infrastructure resources such as containers, virtual machines, databases and virtual data centers from public cloud providers programmatically.
 There is also a command language interface (CLI) for infrastructure management and is based in technologies like terraform, shell, python, docker and others.
