@@ -37,15 +37,6 @@ This work was made possible by
 
 ![Components](static/img/terraform-logo.png)
 
-
-## News
-
-* Bug fix challenges
-* Winners for sprint 21
-* Version 0.02 stable release
-* Be our beta tester and win prizes!
-
-
 ## Blueprints
 
 ```hcl-terraform
